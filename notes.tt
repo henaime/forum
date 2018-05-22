@@ -1,0 +1,19 @@
+composer create-project laravel/laravel ginf-forum
+
+composer install 
+
+php artisan make:auth
+
+php artisan make:controller usersController --resource
+php artisan make:controller postsController --resource
+php artisan make:controller likesController --resource
+php artisan make:controller commentsController --resource
+php artisan make:controller pagesController --resource
+
+php artisan make:model user -m
+php artisan make:model post -m
+php artisan make:model like -m
+php artisan make:model user -m
+
+php artisan migrate 
+
