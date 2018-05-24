@@ -40,6 +40,15 @@ class likesController extends Controller
         $likes = DB::table('likes')->get();
         $like->idpost = $request->input('id');
         $like->iduser = auth()->user()->id;
+        //check if the current user has already like this post
+        // if yes delete it from likes table
+        foreach ($likes as $jaime) {
+            if($like->iduser==$jaime->iduser and $like->idpost==$jaime->idpost ){
+                DB::table('likes')->where([['idpost', '=', $like->idpost],['iduser','=',$like->iduser],])->delete();
+                return redirect('/posts/'.$request->input('id'));
+            }
+        }
+        //else store the informations
         $like->save();
         return redirect('/posts/'.$request->input('id'));
     }
