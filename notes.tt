@@ -22,3 +22,32 @@ create view profile.blade.php
 configure the route 
 add profile methode in pagesController(return view('pages.profile'))
 
+
+
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'nice!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'good!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,1,'bien!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'merci!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'c bon!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,1,'nice!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'good post!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'nice!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'nice one!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'nice!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,1,'qdfsdf !!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'affz!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,1,'nifaezfce!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,1,'cqsdcq!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'nice!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'qfds!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'qfqsfd!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'dsfqsf!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'qdfqs!!',now());
+
+insert into likes(iduser,idpost) values(1,10);
+insert into likes(iduser,idpost) values(2,10);
+insert into likes(iduser,idpost) values(3,10);
+
+alter table likes add constraint pk1 primary key(iduser,idpost);
+
+

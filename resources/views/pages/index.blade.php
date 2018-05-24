@@ -9,13 +9,13 @@
 		@foreach($tab['posts'] as $post)
 		    	@foreach($tab['users'] as $user)
 		    		@if($user->id==$post->id_user)
-		    			<?php $name=$user->name; ?>
+		    			<?php $name=$user->name;$id=$user->id ?>
 		    		@endif
 		    	@endforeach
 
-		    		<H4>{{ $post->title }}
-		    		<small><a href="#">(@ {{ $name }} )</a></small>
-		    		 </H4>
+		    		<H3><a href="posts/{{$post->id_p}}">{{ $post->title }}</a>
+		    		<small><a href="users/{{$id}}">(@ {{ $name }} )</a></small>
+		    		 </H3>
 		    		<p>{{ $post->contenu }}</p>
 		    		<hr>
     	@endforeach

@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -7,13 +8,17 @@
     <div class="span3 well">
         <center>
         <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="/storage/photo.jpg" name="aboutme" width="140" height="140" class="img-circle"></a>
-        <h3>{{ $user['name'] }}</h3>
-        <h4>{{ $user['email'] }}</h4>
+        @foreach($user['user'] as $u)
+        <h3>{{ $u->name }}</h3>
+        <h4>{{ $u->email }}</h4>
         <em>welcome to your profile</em>
+        @endforeach
 		</center>
     </div>
 </div>
 </div>
+
+@if(auth()->user()->id == $user['id'])
 <div class="jumbotron">
   	<form class="needs-validation" novalidate>
           <div class="form-row">
@@ -36,10 +41,11 @@
       </div>
   </form>
 </div>
+@endif
     @foreach($user['posts'] as $post)
      <div class="jumbotron text-left">
-            <H3><a href="posts/{{$post->id_p}}">{{ $post->title }}</a>
-            <small><a href="users/{{$post->id_user}}">(@ {{ auth()->user()->name }} )</a></small>
+            <H3><a href="/posts/{{$post->id_p}}">{{ $post->title }}</a>
+            <small><a href="/users/{{$post->id_user}}">(@ {{ auth()->user()->name }} )</a></small>
              </H3>
             <p>{{ $post->contenu }}</p>
             <hr>
@@ -47,3 +53,4 @@
       @endforeach
 
 @endsection
+

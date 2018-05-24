@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
+use App\User;
 use DB;
 
 class PostsController extends Controller
@@ -58,7 +59,25 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        
+        $posts=post::all();
+        $users=user::all();
+        $comments=DB::table('comments')->where('id_po','=',$id)->get();
+        $nbr_comment=DB::table('comments')->where('id_po','=',$id)->groupBy('id_po')->count();
+        $nbr_likes=DB::table('likes')->where('idpost','=',$id)->groupBy('idpost')->count();
+            foreach ($posts as $post) {
+               if($post->id_p==$id){
+                    $p=$post;
+                    break;
+               }
+            }
+            foreach ($users as $user) {
+               if($user->id==$p->id_user){
+                    $u=$user;
+                    break;
+               }
+            }
+        $tab = ['post'=>$p,'user'=>$u,'comments'=>$comments,'nbr'=>$nbr_comment,'nbr_likes'=>$nbr_likes,'users'=>$users,];
+        return view('pages.show')->with('tab',$tab);
     }
 
     /**
