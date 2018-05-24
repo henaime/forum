@@ -5,8 +5,8 @@
 		<div class="jumbotron text-center">
 			<a href="#"><img src="/storage/ginforum.png"></a>
 		</div>
-		<div class="jumbotron text-left">
 		@foreach($tab['posts'] as $post)
+		<div class="jumbotron text-left">
 		    	@foreach($tab['users'] as $user)
 		    		@if($user->id==$post->id_user)
 		    			<?php $name=$user->name;$id=$user->id ?>
@@ -18,8 +18,13 @@
 		    		 </H3>
 		    		<p>{{ $post->contenu }}</p>
 		    		<hr>
-    	@endforeach
+		    <div>
+		    <a href=""><button class="btn btn-success">j'aime </button></a>
+		    <a href="posts/{{$post->id_p}}"><button class="btn btn-primary">commenter</button></a>
 		    </div>
+		    </div>
+
+    	@endforeach
     {{$tab['posts']->links()}}
 @endsection
 
