@@ -3,7 +3,7 @@
 
 @section('content')
 		<div class="jumbotron text-center">
-			<h3>GinForum</h3>
+			<a href="#"><img src="/storage/ginforum.png"></a>
 		</div>
 		<div class="jumbotron text-left">
 		@foreach($tab['posts'] as $post)

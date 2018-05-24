@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                <img src="/storage/ginforum.png" width="150px" style="margin-top: -10px;">
             </a>
         </div>
 
