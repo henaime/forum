@@ -30,6 +30,8 @@ Route::get('/profile', 'usersController@index');
 Route::resource('pages','PagesController');
 Route::resource('posts','postsController');
 Route::resource('users','usersController');
+Route::resource('comments','commentsController');
+Route::resource('likes','likesController');
 
 
 

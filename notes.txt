@@ -51,3 +51,27 @@ insert into likes(iduser,idpost) values(3,10);
 alter table likes add constraint pk1 primary key(iduser,idpost);
 
 
+
+--------------------------------
+Installation form
+Begin by installing this package through Composer. Edit your project's composer.json file to require laravelcollective/html.
+
+composer require "laravelcollective/html":"^5.4.0"
+Next, add your new provider to the providers array of config/app.php:
+
+  'providers' => [
+    // ...
+    Collective\Html\HtmlServiceProvider::class,
+    // ...
+  ],
+Finally, add two class aliases to the aliases array of config/app.php:
+
+  'aliases' => [
+    // ...
+      'Form' => Collective\Html\FormFacade::class,
+      'Html' => Collective\Html\HtmlFacade::class,
+    // ...
+  ],
+
+---------------------------------------
+

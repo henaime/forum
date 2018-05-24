@@ -15,26 +15,17 @@
 </div>
 </div>
 <div class="jumbotron">
-  	<form class="needs-validation" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <input type="text" class="form-control" id="validationCustom01" placeholder="title-here"  required>
-                <div class="valid-feedback">
-                  post title
-                </div>
-            </div>
-              <div class="form-group">
-                <textarea type="text" class="form-control" id="validationCustom02" placeholder="content-here"  required></textarea>
-                <div class="valid-feedback">
-                  post content
-                </div>
-              </div>
-          </div>
-        <div>
-      <br>
-      <button class="btn btn-primary" type="submit">Submit form</button>
-      </div>
-  </form>
+  {!! Form::open(['action' => 'postsController@store','method'=>'POST']) !!}
+    <div class="form-group">
+      {{Form::label('title','Titre')}}
+      {{Form::text('title','',['class'=>'form-control','placeholder'=>'titre'])}}
+    </div>
+    <div class="form-group">
+      {{Form::label('content','Contenu')}}
+      {{Form::textarea('content','',['class'=>'form-control','placeholder'=>'contenu'])}}
+    </div>
+    {{Form::submit('poster',['class'=>'btn btn-success'])}}
+  {!! Form::close() !!}
 </div>
     @foreach($user['posts'] as $post)
      <div class="jumbotron text-left">

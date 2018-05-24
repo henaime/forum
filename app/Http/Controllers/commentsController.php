@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\comment;
 
 class commentsController extends Controller
 {
@@ -34,7 +35,13 @@ class commentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = new Comment;
+        $comment->contenu = $request->input('content');
+        $comment->id_us = auth()->user()->id;
+        $comment->id_po = $request->input('id');
+        $comment->save();
+        return redirect('/posts/'.$request->input('id'));
+
     }
 
     /**

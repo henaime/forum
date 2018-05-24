@@ -8,7 +8,10 @@
 		    <p>{{ $tab['post']->contenu }}</p>
 		    <hr>
 		    <div>
-		    	<button class="btn btn-success" type="submit">j'aime</button>
+		    	{!! Form::open(['action' => 'likesController@store','method'=>'POST']) !!}
+		    		<input type="hidden" name="id" value="{{ $tab['post']->id_p }}">
+			    {{Form::submit('j"aime',['class'=>'btn btn-success'])}}
+			  {!! Form::close() !!}
 		    	<div class="text-right">
 		    	<i>{{$tab['nbr_likes'] }} j'aime(s) {{$tab['nbr'] }} commentaire(s)</i>
 		    </div>
@@ -16,14 +19,14 @@
 		    
 		 </div>
 		 <div class="jumbotron">
-  			<form class="needs-validation" novalidate>
-		          <div class="form-row">
-		            <div class="form-group">
-		              <input type="text" class="form-control" id="validationCustom01" placeholder="comment-here"  required>
-		            </div>
-		      		<button class="btn btn-primary" type="submit">commenter</button>
-		          </div>
-		  </form>
+		 	{!! Form::open(['action' => 'commentsController@store','method'=>'POST']) !!}
+		    <div class="form-group">
+		      {{Form::label('content','Contenu')}}
+		    	<input type="hidden" name="id" value="{{ $tab['post']->id_p }}"> 
+		      {{Form::text('content','',['class'=>'form-control','placeholder'=>'titre'])}}
+		    </div>
+		    {{Form::submit('commenter',['class'=>'btn btn-primary'])}}
+		  {!! Form::close() !!}
 	</div>
 
 		@foreach($tab['comments'] as $comment)

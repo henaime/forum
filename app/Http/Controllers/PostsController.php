@@ -48,7 +48,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->id_user = auth()->user()->id;
+        $post->contenu = $request->input('content');
+        $post->img = 'photo.jpg';
+        $post->save();
+        return redirect('/profile');
     }
 
     /**

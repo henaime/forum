@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\like;
+use DB;
 
 class likesController extends Controller
 {
@@ -34,7 +36,12 @@ class likesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $like = new Like;
+        $likes = DB::table('likes')->get();
+        $like->idpost = $request->input('id');
+        $like->iduser = auth()->user()->id;
+        $like->save();
+        return redirect('/posts/'.$request->input('id'));
     }
 
     /**
@@ -45,7 +52,7 @@ class likesController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
