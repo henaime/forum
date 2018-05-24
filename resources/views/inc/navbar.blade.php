@@ -25,7 +25,6 @@
             <ul class="nav navbar-nav">
               <li><a href="/">Home</a></li>
               <li><a href="/about">About</a></li>
-              <li><a href="/posts">Posts</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -42,6 +41,11 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="/profile">
+                                    Profile
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
@@ -52,6 +56,7 @@
                                     {{ csrf_field() }}
                                 </form>
                             </li>
+                            
                         </ul>
                     </li>
                 @endif

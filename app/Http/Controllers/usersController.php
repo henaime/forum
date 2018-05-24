@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\app\User;
 
 class usersController extends Controller
 {
@@ -13,7 +14,10 @@ class usersController extends Controller
      */
     public function index()
     {
-        //
+        $user_name = auth()->user()->name;
+        $user_email = auth()->user()->email;
+        $user=['name'=>$user_name,'email'=>$user_email,];
+        return view('pages.profile')->with('user',$user);
     }
 
     /**

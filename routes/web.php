@@ -24,7 +24,8 @@ Route::get('/users/{id}/{name}', function($id, $name){
 
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
-Route::get('/posts', 'PagesController@index');
+Route::get('/profile', 'usersController@index');
+
 
 Auth::routes();
 

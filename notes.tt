@@ -17,3 +17,8 @@ php artisan make:model user -m
 
 php artisan migrate 
 
+--profile view
+create view profile.blade.php
+configure the route 
+add profile methode in pagesController(return view('pages.profile'))
+

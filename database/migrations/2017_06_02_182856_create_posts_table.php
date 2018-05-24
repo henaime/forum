@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id_p')->autoincriment();
             $table->addColumn('integer', 'id_user', ['unsigned' => true, 'length' => 11]);
+            $table->string('title');
             $table->mediumText('contenu');
             $table->string('img');
             $table->foreign('id_user')->references('id')->on('users');
