@@ -16,17 +16,15 @@
 		    	<i>{{$tab['nbr_likes'] }} j'aime(s) {{$tab['nbr'] }} commentaire(s)</i>
 		    </div>
 		    </div>
-		    
-		 </div>
-		 <div class="jumbotron">
+			<div>
 		 	{!! Form::open(['action' => 'commentsController@store','method'=>'POST']) !!}
 		    <div class="form-group">
-		      {{Form::label('content','Contenu')}}
 		    	<input type="hidden" name="id" value="{{ $tab['post']->id_p }}"> 
 		      {{Form::text('content','',['class'=>'form-control','placeholder'=>'titre'])}}
 		    </div>
 		    {{Form::submit('commenter',['class'=>'btn btn-primary'])}}
 		  {!! Form::close() !!}
+		  </div>
 	</div>
 
 		@foreach($tab['comments'] as $comment)
