@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="jumbotron">
+<div class="jumbotron" style="background-color: #cdcdcd">
 
 <div class="container">
     <div class="span3 well">
@@ -14,7 +14,7 @@
     </div>
 </div>
 </div>
-<div class="jumbotron">
+<div class="jumbotron" style="background-color: #cdcdcd">
   {!! Form::open(['action' => 'postsController@store','method'=>'POST']) !!}
     <div class="form-group">
       {{Form::label('title','Titre')}}
@@ -28,7 +28,7 @@
   {!! Form::close() !!}
 </div>
     @foreach($user['posts'] as $post)
-     <div class="jumbotron text-left">
+     <div class="jumbotron text-left" style="background-color: #cdcdcd">
             <H3><a href="posts/{{$post->id_p}}">{{ $post->title }}</a>
             <small><a href="users/{{$post->id_user}}">(@ {{ auth()->user()->name }} )</a></small>
              </H3>

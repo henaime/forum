@@ -3,7 +3,7 @@
 
 @section('content')
 	    <a href="/" class="btn btn-default" id="btn">Go Back</a>
-		<div class="jumbotron text-left">
+		<div class="jumbotron text-left" style="background-color: white;">
 		    <H3>{{ $tab['post']->title }} <small><a href="#">(@ {{ $tab['user']->name }} )</a></small> </H3>
 		    <p>{{ $tab['post']->contenu }}</p>
 		    <hr>
@@ -28,7 +28,7 @@
 	</div>
 
 		@foreach($tab['comments'] as $comment)
-		<div class="jumbotron text-left">
+		<div class="jumbotron text-left" style="background-color: white;">
 			@foreach($tab['users'] as $user)
 				@if($comment->id_us==$user->id)
 		   			 <p><a href="#">{{$user->name}}</a> : <small>{{ $comment->contenu }}</small></p>

@@ -2,11 +2,11 @@
 @extends('layouts.app')
 
 @section('content')
-		<div class="jumbotron text-center">
+		<div class="jumbotron text-center" style="background-color: #646464;">
 			<a href="#"><img src="/storage/ginforum.png"></a>
 		</div>
 		@foreach($tab['posts'] as $post)
-		<div class="jumbotron text-left">
+		<div class="jumbotron text-left" style="background-color: white; ">
 		    	@foreach($tab['users'] as $user)
 		    		@if($user->id==$post->id_user)
 		    			<?php $name=$user->name;$id=$user->id ?>
@@ -19,10 +19,13 @@
 		    		<p>{{ $post->contenu }}</p>
 		    		<hr>
 		    <div>
+		    @if (!Auth::guest())
 		    <a href=""><button class="btn btn-success">j'aime </button></a>
 		    <a href="posts/{{$post->id_p}}"><button class="btn btn-primary">commenter</button></a>
+		    @endif
 		    </div>
-		    </div>
+		   </div>
+
 
     	@endforeach
     {{$tab['posts']->links()}}
