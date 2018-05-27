@@ -7,6 +7,7 @@
 		    <H3>{{ $tab['post']->title }} <small><a href="#">(@ {{ $tab['user']->name }} )</a></small> </H3>
 		    <p>{{ $tab['post']->contenu }}</p>
 		    <hr>
+		    	@if (!Auth::guest())
 		    <div>
 		    	{!! Form::open(['action' => 'likesController@store','method'=>'POST']) !!}
 		    		<input type="hidden" name="id" value="{{ $tab['post']->id_p }}">
@@ -25,6 +26,7 @@
 		    {{Form::submit('commenter',['class'=>'btn btn-primary'])}}
 		  {!! Form::close() !!}
 		  </div>
+		  @endif
 	</div>
 
 		@foreach($tab['comments'] as $comment)

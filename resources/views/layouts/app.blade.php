@@ -15,10 +15,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app" style='background-image:url("/storage/background.jpg");'>
+    <div id="app" style='background-color:#FAFBFC;'>
         @include('inc.navbar')
         <div class="container" >
             @yield('content')
+        </div>
+        <div>
+            @include('inc.footer')
         </div>
     </div>
 

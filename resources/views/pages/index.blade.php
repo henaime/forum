@@ -6,7 +6,7 @@
 			<a href="#"><img src="/storage/ginforum.png"></a>
 		</CENTER>
 		@foreach($tab['posts'] as $post)
-		<div class="jumbotron text-left" style="background-color: white; ">
+		<div class="jumbotron text-left" style="background-color: #FAFBFC; ">
 		    	@foreach($tab['users'] as $user)
 		    		@if($user->id==$post->id_user)
 		    			<?php $name=$user->name;$id=$user->id ?>

@@ -41,7 +41,7 @@
             <hr>
         <div>
         <a href="#"><button class="btn btn-success">j'aime </button></a>
-        <a href="posts/{{$post->id_p}}"><button class="btn btn-primary">commenter</button></a>
+        <a href="/posts/{{$post->id_p}}"><button class="btn btn-primary">commenter</button></a>
         </div>
        </div>
       @endforeach
