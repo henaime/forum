@@ -2,9 +2,9 @@
 @extends('layouts.app')
 
 @section('content')
-		<div class="jumbotron text-center" style="background-color: #646464;">
+		<CENTER>
 			<a href="#"><img src="/storage/ginforum.png"></a>
-		</div>
+		</CENTER>
 		@foreach($tab['posts'] as $post)
 		<div class="jumbotron text-left" style="background-color: white; ">
 		    	@foreach($tab['users'] as $user)
@@ -14,7 +14,7 @@
 		    	@endforeach
 
 		    		<H3><a href="posts/{{$post->id_p}}">{{ $post->title }}</a>
-		    		<small><a href="users/{{$id}}">(@ {{ $name }} )</a></small>
+		    		<small><a href="/users/{{$id}}">(@ {{ $name }} )</a></small>
 		    		 </H3>
 		    		<p>{{ $post->contenu }}</p>
 		    		<hr>

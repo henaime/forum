@@ -1,20 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="jumbotron" style="background-color: #cdcdcd">
 
-<div class="container">
-    <div class="span3 well">
+
+<div class="jumbotron" style="background-color: #FFFFF0">
+
         <center>
-        <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="/storage/photo.jpg" name="aboutme" width="140" height="140" class="img-circle"></a>
-        <h3>{{ $user['name'] }}</h3>
-        <h4>{{ $user['email'] }}</h4>
-        <em>welcome to your profile</em>
-		</center>
-    </div>
+          <div class="parent">
+            <img src="/storage/cover.jpg" id="cover" width="728" height="269" class="img-fluid" alt="Responsive image">
+            <a href="/profile"><img id="profile" src="/storage/photo.jpg" name="aboutme" width="140" height="140" class="img-circle"></a>
+          </div>
+        <div>
+          <br><br><br>
+          <h3>{{ $user['name'] }}</h3>
+          <h4>{{ $user['email'] }}</h4>
+          <em>welcome to your profile</em>
+        </div>
+    </center>
+
 </div>
-</div>
-<div class="jumbotron" style="background-color: #cdcdcd">
+<div class="jumbotron" style="background-color: #FFFFF0">
   {!! Form::open(['action' => 'postsController@store','method'=>'POST']) !!}
     <div class="form-group">
       {{Form::label('title','Titre')}}
@@ -28,7 +33,7 @@
   {!! Form::close() !!}
 </div>
     @foreach($user['posts'] as $post)
-     <div class="jumbotron text-left" style="background-color: #cdcdcd">
+     <div class="jumbotron text-left" style="background-color: #FFFFF0">
             <H3><a href="posts/{{$post->id_p}}">{{ $post->title }}</a>
             <small><a href="users/{{$post->id_user}}">(@ {{ auth()->user()->name }} )</a></small>
              </H3>
@@ -42,3 +47,23 @@
       @endforeach
 
 @endsection
+
+
+<style type="text/css">
+
+  .parent {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    #cover {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    #profile {
+      position: absolute;
+      top: 200px;
+      left: 440px;
+    }
+</style>
