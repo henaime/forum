@@ -22,8 +22,13 @@ class pagesController extends Controller
         $posts=post::orderBy('id_p','asc')->paginate(3);
         $users=DB::table('users')->get();
 
+        foreach ($posts as $post) {
+            $nbr_comments[$post->id_p]=DB::table('comments')->where('id_po','=',$post->id_p)->groupBy('id_po')->count();
+            $nbr_likes[$post->id_p]=DB::table('likes')->where('idpost','=',$post->id_p)->groupBy('idpost')->count();
+        }
 
-        $tab = ['posts'=>$posts,'users'=>$users,];
+
+        $tab = ['posts'=>$posts,'users'=>$users,'nbr_likes'=>$nbr_likes,'nbr_comments'=>$nbr_comments,];
         return view('pages.index')->with('tab',$tab);    
     }
 
@@ -43,9 +48,23 @@ class pagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public function store(Request $request)
     {
-        //
+        $like = new Like;
+        $likes = DB::table('likes')->get();
+        $like->idpost = $request->input('id');
+        $like->iduser = auth()->user()->id;
+        //check if the current user has already like this post
+        // if yes delete it from likes table
+        foreach ($likes as $jaime) {
+            if($like->iduser==$jaime->iduser and $like->idpost==$jaime->idpost ){
+                DB::table('likes')->where([['idpost', '=', $like->idpost],['iduser','=',$like->iduser],])->delete();
+                return redirect('/');
+            }
+        }
+        //else store the informations
+        $like->save();
+        return redirect('/');
     }
 
     /**

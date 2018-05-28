@@ -28,7 +28,7 @@ Route::get('/show', 'PostsController@show');
 Route::get('/profile', 'PostsController@suprimer');
 Route::get('/profile', 'usersController@index');
 
-Route::resource('pages','PagesController');
+Route::resource('pages','pagesController');
 Route::resource('posts','postsController');
 Route::resource('users','usersController');
 Route::resource('comments','commentsController');

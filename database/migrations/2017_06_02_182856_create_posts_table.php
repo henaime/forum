@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->addColumn('integer', 'id_user', ['unsigned' => true, 'length' => 11]);
             $table->string('title');
             $table->mediumText('contenu');
+            $table->string('img')->default('post.jpg');
             $table->foreign('id_user')->references('id')->on('users');
             $table->timestamps();
         });
