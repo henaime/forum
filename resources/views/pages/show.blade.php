@@ -4,11 +4,18 @@
 @section('content')
 	    <a href="/" class="btn btn-default" id="btn">Go Back</a>
 		<div class="jumbotron text-left" style="background-color: white;">
+		    <!-- show post's content and title-->
+		    <div>
+		    <img src="/storage/post.png" id="img">
 		    <H3>{{ $tab['post']->title }} <small><a href="#">(@ {{ $tab['user']->name }} )</a></small> </H3>
 		    <p>{{ $tab['post']->contenu }}</p>
+		    </div>
+
 		    <hr>
 		    	@if (!Auth::guest())
 		    <div>
+
+		    <!-- add or delete likes-->
 		    	{!! Form::open(['action' => 'likesController@store','method'=>'POST']) !!}
 		    		<input type="hidden" name="id" value="{{ $tab['post']->id_p }}">
 			    {{Form::submit('j"aime',['class'=>'btn btn-success'])}}
@@ -18,6 +25,7 @@
 		    </div>
 		    </div>
 			<div>
+		    <!-- add comments-->
 		 	{!! Form::open(['action' => 'commentsController@store','method'=>'POST']) !!}
 		    <div class="form-group">
 		    	<input type="hidden" name="id" value="{{ $tab['post']->id_p }}"> 
@@ -29,6 +37,7 @@
 		  @endif
 	</div>
 
+		    <!-- show comments-->
 		@foreach($tab['comments'] as $comment)
 		<div class="jumbotron text-left" style="background-color: white;">
 			@foreach($tab['users'] as $user)
@@ -45,5 +54,11 @@
 	#btn{
 		position: absolute;
 		right: 160px;
+	}
+	#img{
+		position: absolute;
+		left:20px;
+		width:250px ;
+		height:180px ;
 	}
 </style>

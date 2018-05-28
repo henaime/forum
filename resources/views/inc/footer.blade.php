@@ -1,6 +1,5 @@
 
 <!-- Footer -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
 
   <!-- Footer Links -->
@@ -20,7 +19,12 @@
   <!-- Social buttons -->
   <ul class="list-unstyled list-inline text-center">
     <li class="list-inline-item">
-      <a class="btn-floating btn-fb mx-4">
+      <a href="https://github.com/henaime/forum" class="btn-floating btn-fb mx-4">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a href="https://www.facebook.com/enaime97" class="btn-floating btn-fb mx-4">
         <i class="fa fa-facebook-square fa-2x"> </i>
       </a>
     </li>

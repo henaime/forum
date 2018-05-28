@@ -12,11 +12,13 @@
 		    			<?php $name=$user->name;$id=$user->id ?>
 		    		@endif
 		    	@endforeach
-
+		    	<div>
+					<img src="/storage/post.png" id="img">
 		    		<H3><a href="posts/{{$post->id_p}}">{{ $post->title }}</a>
 		    		<small><a href="/users/{{$id}}">(@ {{ $name }} )</a></small>
 		    		 </H3>
 		    		<p>{{ $post->contenu }}</p>
+		    	</div>
 		    		<hr>
 		    <div>
 		    @if (!Auth::guest())
@@ -30,4 +32,13 @@
     	@endforeach
     {{$tab['posts']->links()}}
 @endsection
+
+<style type="text/css">
+	#img{
+		position: absolute;
+		left:20px;
+		width:250px ;
+		height:180px ;
+	}
+</style>
 

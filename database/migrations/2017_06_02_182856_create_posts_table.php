@@ -14,11 +14,10 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id_p')->autoincriment();
+            $table->increments('id_p')->autoincriment();//int lenght=10
             $table->addColumn('integer', 'id_user', ['unsigned' => true, 'length' => 11]);
             $table->string('title');
             $table->mediumText('contenu');
-            $table->string('img');
             $table->foreign('id_user')->references('id')->on('users');
             $table->timestamps();
         });
