@@ -2,12 +2,11 @@
 @extends('layouts.app')
 
 @section('content')
-		<?php 
-
-		 ?>
 		<CENTER>
 			<a href="#"><img src="/storage/coverAcc.png"></a>
 		</CENTER>
+		<?php //dd($tab); ?>
+		@if($tab['posts']!=null)
 		@foreach($tab['posts'] as $post)
 		<div class="jumbotron text-left" style="background-color: #FAFBFC; ">
 			<!-- cette blog est responsable de recuperer le nom du l'utilisateur qui a poster le post-->
@@ -60,6 +59,7 @@
     	@endforeach
     	<!--pagination-->
     {{$tab['posts']->links()}}
+    @endif
 @endsection
 
 <style type="text/css">
