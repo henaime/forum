@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="/storage/ginforum.png" width="150px" style="margin-top: -10px;">
+                <img src="/storage/ginforum.png" width="50px" height="30px" style="margin-top: -10px;">
             </a>
         </div>
 
@@ -34,7 +34,7 @@
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
-                   <li> <a href="/profile"><img src="/storage/photo.jpg" style="position: absolute; width: 30px;height: 30px;top: 10px;right: 4px;"></a></li>
+                   <li> <a href="/profile"><img src="../{{Auth::user()->image}}" style="position: absolute; width: 30px;height: 30px;top: 10px;right: 4px;"></a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -57,7 +57,7 @@
                                     {{ csrf_field() }}
                                 </form>
                             </li>
-                            
+
                         </ul>
                     </li>
                 @endif

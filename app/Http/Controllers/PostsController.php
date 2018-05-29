@@ -36,7 +36,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-
+        return view('pages.create');
     }
 
     /**
@@ -47,6 +47,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+
         /*
         $this->valdiate($request,[
             'title' => 'required',
