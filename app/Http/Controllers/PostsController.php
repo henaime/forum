@@ -48,8 +48,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-=======
+
         /*
         $this->valdiate($request,[
             'title' => 'required',
@@ -73,8 +72,6 @@ class PostsController extends Controller
         } else {
             $fileNameToStore = 'post.jpg';
         }
-
->>>>>>> e8068fb72cb417ee1b00f9068a67c4810c86fd84
         $post = new Post;
         $post->title = $request->input('title');
         $post->id_user = auth()->user()->id;
