@@ -24,7 +24,29 @@ add profile methode in pagesController(return view('pages.profile'))
 
 
 
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'nice!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'good!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,1,'bien!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'merci!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'c bon!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,1,'nice!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'good post!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'nice!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'nice one!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'nice!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,1,'qdfsdf !!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'affz!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,1,'nifaezfce!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,1,'cqsdcq!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'nice!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'qfds!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'qfqsfd!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,2,'dsfqsf!!',now());
+insert into comments(id_po,id_us,contenu,created_at) values(10,3,'qdfqs!!',now());
 
+insert into likes(iduser,idpost) values(1,10);
+insert into likes(iduser,idpost) values(2,10);
+insert into likes(iduser,idpost) values(3,10);
 
 alter table likes add constraint pk1 primary key(iduser,idpost);
 
@@ -32,21 +54,17 @@ alter table likes add constraint pk1 primary key(iduser,idpost);
 
 --------------------------------
 Installation form
-
-
+Begin by installing this package through Composer. Edit your project's composer.json file to require laravelcollective/html.
 
 composer require "laravelcollective/html":"^5.4.0"
-
-
-config/app.php:
+Next, add your new provider to the providers array of config/app.php:
 
   'providers' => [
     // ...
     Collective\Html\HtmlServiceProvider::class,
     // ...
   ],
-
-config/app.php:
+Finally, add two class aliases to the aliases array of config/app.php:
 
   'aliases' => [
     // ...
