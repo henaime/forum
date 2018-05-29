@@ -6,13 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
-<<<<<<< HEAD
-use DB;  
-=======
-use DB;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Validation\Validator;
->>>>>>> f84cd453979465ea8f697781f19a4548e9e4b2dd
 
 class PostsController extends Controller
 {

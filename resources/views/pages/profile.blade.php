@@ -22,6 +22,7 @@
 <div class="jumbotron" style="background-color: #FFFFF0">
   <!-- creer un nouveau post -->
   {!! Form::open(['action' => 'postsController@store','method'=>'POST','files'=>'true','enctype'=>'multipart/form-data',]) !!}
+  {!! Form::open(['action' => 'postsController@store','method'=>'POST']) !!}
     <div class="form-group">
       {{Form::label('title','Titre')}}
       {{Form::text('title','',['class'=>'form-control','placeholder'=>'titre'])}}
@@ -30,11 +31,9 @@
       {{Form::label('content','Contenu')}}
       {{Form::textarea('content','',['class'=>'form-control','placeholder'=>'contenu'])}}
     </div>
-    {{Form::file('photo',['class'=>'btn btn-default'])}}
     {{Form::submit('poster',['class'=>'btn btn-success'])}}
   {!! Form::close() !!}
 </div>
-  <!-- l'affichage des posts -->
     @foreach($user['posts'] as $post)
      <div class="jumbotron text-left" style="background-color: #FFFFF0">
             <H3><a href="posts/{{$post->id_p}}">{{ $post->title }}</a>
@@ -46,6 +45,7 @@
         <a href="#"><button class="btn btn-success">j'aime </button></a>
         <a href="/posts/{{$post->id_p}}"><button id="send" class="btn btn-primary">commenter</button></a>
         <a href="/posts/delete/{{$post->id_p}}"><button class="btn btn-danger">supprimer post</button></a>
+        <a href="#"><button id="id" class="btn btn-danger">editer post</button></a>
         </div>
        </div>
       @endforeach
@@ -71,5 +71,9 @@
       left: 440px;
     }
 </style>
+<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
+<script type="text/javascript">
+  $('#id').click(function(){alert('hello');})
+</script>
 
 
