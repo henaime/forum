@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use DB;
 =======
 <<<<<<< HEAD
@@ -14,6 +15,9 @@ use DB;
 use DB;  
 >>>>>>> parent of 89fd093... c
 >>>>>>> 9b888115482c0bceb39e0b632e1f5a43d05b286d
+=======
+use DB;
+>>>>>>> parent of a3757ae... c
 
 class PostsController extends Controller
 {
@@ -177,16 +181,15 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        
+        /*
         $message='votre post a été supprimer';
-        $id_post=$id;
+        $id_post=$request->input('id');
         $id_user=auth()->user()->id;
         DB::table('likes')->where('idpost', '=', $id_post)->delete();
         DB::table('comments')->where('id_po', '=', $id_post)->delete();
-        DB::table('posts')->where([['id_p', '=', $id_post],['id_user','=',$id_user],])->delete();
-        
-        
-        return redirect('/profile');
+        DB::table('post')->where([['id_p', '=', $id_post],['id_user','=',$id_user],])->delete();
+        return redirect('/')->with('message',$message);
+        */
     }
 
 }
