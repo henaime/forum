@@ -2,16 +2,21 @@
 @extends('layouts.app')
 
 @section('content')
+		<?php 
+
+		 ?>
 		<CENTER>
 			<a href="#"><img src="/storage/coverAcc.png"></a>
 		</CENTER>
 		@foreach($tab['posts'] as $post)
 		<div class="jumbotron text-left" style="background-color: #FAFBFC; ">
+			<!-- cette blog est responsable de recuperer le nom du l'utilisateur qui a poster le post-->
 		    	@foreach($tab['users'] as $user)
 		    		@if($user->id==$post->id_user)
 		    			<?php $name=$user->name;$id=$user->id ?>
 		    		@endif
 		    	@endforeach
+		    	<!-- afficher le post-->
 		    	<div>
 					<img src="/storage/post.png" id="img">
 		    		<H3><a href="posts/{{$post->id_p}}">{{ $post->title }}</a>
@@ -45,16 +50,15 @@
 		    <!-- form de l'action "aimer un post"-->
 		    	{!! Form::open(['action' => 'pagesController@store','method'=>'POST']) !!}
 			    		<input type="hidden" name="id" value="{{ $post->id_p }}">
-				   {{Form::submit('j"aime',['class'=> 'btn btn-success '])}}
+			    		<input type="submit" name='j"aime' value="j'aime" class="btn btn-<?php echo 'success' ?>">
+				  
 				{!! Form::close() !!}
 			    <a href="posts/{{$post->id_p}}"><button class="btn btn-primary">commenter</button></a>
 		    @endif
 		    </div>
 		   </div>
-
-		  
-
     	@endforeach
+    	<!--pagination-->
     {{$tab['posts']->links()}}
 @endsection
 
