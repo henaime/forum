@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\app\User;
+use App\User;
+use App\Post;
 use DB;
 
 class usersController extends Controller
@@ -15,12 +16,10 @@ class usersController extends Controller
      */
     public function index()
     {
-        $user_name = auth()->user()->name;
-        $user_email = auth()->user()->email;
         $user_id = auth()->user()->id;
-        $posts = DB::table('posts')->where('id_user','=',$user_id)->get();
-        $user=['name'=>$user_name,'email'=>$user_email,'posts'=>$posts,];
-        return view('pages.profile')->with('user',$user);
+        $user=User::findOrFail($user_id);
+        $posts=Post::where('id_user',$user_id)->get();
+        return view('pages.profile',['user'=>$user,'posts'=>$posts]);
     }
 
     /**
@@ -52,10 +51,10 @@ class usersController extends Controller
      */
     public function show($id)
     {
-        $u = DB::table('users')->where('id','=',$id)->get();
-        $posts = DB::table('posts')->where('id_user','=',$id)->get();
-        $user=['user'=>$u,'posts'=>$posts,'id'=>$id,];
-        return view('pages.profile1')->with('user',$user);
+      $u = DB::table('users')->where('id','=',$id)->get();
+     $posts = DB::table('posts')->where('id_user','=',$id)->get();
+     $user=['user'=>$u,'posts'=>$posts,'id'=>$id,];
+     return view('pages.profile1')->with('user',$user);
     }
 
     /**
@@ -66,7 +65,8 @@ class usersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::findOrFail($id);
+        return view('pages.Changeprofile',compact('user'));
     }
 
     /**
@@ -78,7 +78,34 @@ class usersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::findOrFail($id);
+
+    //traitement d'image
+        if ($request->hasFile('ProImage')) {
+            if($request->file('ProImage')->isValid()) {
+                    $file = $request->file('ProImage');
+                    $name = rand(11111, 99999) . '.' . $file->getClientOriginalExtension();
+
+                    $request->file('ProImage')->move("Images/Profile/", $name);
+                    $path1='Images/Profile/'.$name;
+            }
+        }
+        if ($request->hasFile('Cover')) {
+            if($request->file('Cover')->isValid()) {
+
+                    $file = $request->file('Cover');
+                    $name = rand(11111, 99999) . '.' . $file->getClientOriginalExtension();
+
+                    $request->file('Cover')->move("Images/covers/", $name);
+                    $path2='Images/covers/'.$name;
+            }
+        }
+        $user->name=$request->input('name');
+        $user->email=$request->input('email');
+        $user->image=$path1;
+        $user->cover=$path2;
+        $user->save();
+        return redirect('/profile');
     }
 
     /**
