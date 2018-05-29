@@ -3,7 +3,7 @@
 
 @section('content')
 		<CENTER>
-			<a href="#"><img src="/storage/ginforum.png"></a>
+			<a href="#"><img src="/storage/coverAcc.png"></a>
 		</CENTER>
 		@foreach($tab['posts'] as $post)
 		<div class="jumbotron text-left" style="background-color: #FAFBFC; ">
