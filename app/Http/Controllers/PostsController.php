@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
 use DB;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Validation\Validator;
 
 class PostsController extends Controller
 {
@@ -48,13 +50,37 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        /*
+        $this->valdiate($request,[
+            'title' => 'required',
+            'content' => 'required',
+            'photo' => 'image|nullable|max:1999',
+        ]);
+    */
 
+          // Handle File Upload
+        if($request->hasFile('photo')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('photo')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('photo')->storeAs('/public', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'post.jpg';
+        }
 
         $post = new Post;
         $post->title = $request->input('title');
         $post->id_user = auth()->user()->id;
         $post->contenu = $request->input('content');
-        $post->img = 'photo.jpg';
+        $post->img = $fileNameToStore;
+
+
         $post->save();
         return redirect('/profile');
     }
