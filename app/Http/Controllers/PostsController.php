@@ -6,7 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
+<<<<<<< HEAD
 use DB;
+=======
+<<<<<<< HEAD
+=======
+use DB;  
+>>>>>>> parent of 89fd093... c
+>>>>>>> 9b888115482c0bceb39e0b632e1f5a43d05b286d
 
 class PostsController extends Controller
 {
@@ -48,6 +55,10 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9b888115482c0bceb39e0b632e1f5a43d05b286d
 
         /*
         $this->valdiate($request,[
@@ -56,7 +67,10 @@ class PostsController extends Controller
             'photo' => 'image|nullable|max:1999',
         ]);
     */
+=======
+>>>>>>> parent of 89fd093... c
 
+<<<<<<< HEAD
           // Handle File Upload
         if($request->hasFile('photo')){
             // Get filename with the extension
@@ -72,13 +86,14 @@ class PostsController extends Controller
         } else {
             $fileNameToStore = 'post.jpg';
         }
+=======
+
+>>>>>>> 9b888115482c0bceb39e0b632e1f5a43d05b286d
         $post = new Post;
         $post->title = $request->input('title');
         $post->id_user = auth()->user()->id;
         $post->contenu = $request->input('content');
-        $post->img = $fileNameToStore;
-
-
+        $post->img = 'photo.jpg';
         $post->save();
         return redirect('/profile');
     }

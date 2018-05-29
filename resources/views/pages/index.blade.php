@@ -9,6 +9,7 @@
 			<a href="/create"><button class="btn btn-primary" style="position: center;">Creer un post</button>></a>
 		@endif
 		@if($tab['posts']!=null)
+<<<<<<< HEAD
 			@foreach($tab['posts'] as $post)
 			<div class="jumbotron text-left" style="background-color: #FAFBFC; ">
 				<!-- cette blog est responsable de recuperer le nom du l'utilisateur qui a poster le post-->
@@ -44,6 +45,30 @@
 					    <!-- afficher le nombre de j'aimes et commentaires-->
 					    <div class="text-right">
 					    	<i>{{ $likes }} j'aime(s) {{ $comments }} commentaire(s)</i>
+=======
+		@foreach($tab['posts'] as $post)
+		<div class="jumbotron text-left" style="background-color: #FAFBFC; ">
+			<!-- cette blog est responsable de recuperer le nom du l'utilisateur qui a poster le post-->
+		    	@foreach($tab['users'] as $user)
+		    		@if($user->id==$post->id_user)
+		    			<?php $name=$user->name;$id=$user->id ?>
+		    		@endif
+		    	@endforeach
+		    	<!-- afficher le post-->
+		    	<div>
+					<img src="/storage/post.png" id="img">
+		    		<H3><a href="posts/{{$post->id_p}}">{{ $post->title }}</a>
+		    		<small><a href="/users/{{$id}}">(@ {{ $name }} )</a></small>
+		    		 </H3>
+		    		<p>{{ $post->contenu }}</p>
+		    	</div>
+		    		<hr>
+		    		<!-- recuperer le  nombre de j'aimes et commentaires de chaque post-->
+		    		@foreach($tab['nbr_likes'] as $index => $nbr_likes)
+		    			@if($index==$post->id_p)
+			    		<div class="text-right">
+			    			<?php $likes= $nbr_likes;  ?>
+>>>>>>> parent of 89fd093... c
 					    </div>
 			    <div>
 			    <!-- les button j'aime et commenter show si l'utilisateur est connecté-->
@@ -69,7 +94,7 @@
 		position: absolute;
 		left:20px;
 		width:250px ;
-		height:250px ;
+		height:180px ;
 	}
 </style>
 
