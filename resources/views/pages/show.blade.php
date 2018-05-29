@@ -15,11 +15,12 @@
 		    	@if (!Auth::guest())
 		    <div>
 
-		    <!-- add or delete likes-->
+		    <!-- add or delete likes -->
 		    	{!! Form::open(['action' => 'likesController@store','method'=>'POST']) !!}
 		    		<input type="hidden" name="id" value="{{ $tab['post']->id_p }}">
 			    {{Form::submit('j"aime',['class'=>'btn btn-success'])}}
 			  {!! Form::close() !!}
+			<!-- afficher le nombre des jaimes et commentaires-->
 		    	<div class="text-right">
 		    	<i>{{$tab['nbr_likes'] }} j'aime(s) {{$tab['nbr'] }} commentaire(s)</i>
 		    </div>
@@ -29,7 +30,7 @@
 		 	{!! Form::open(['action' => 'commentsController@store','method'=>'POST']) !!}
 		    <div class="form-group">
 		    	<input type="hidden" name="id" value="{{ $tab['post']->id_p }}"> 
-		      {{Form::text('content','',['class'=>'form-control','placeholder'=>'titre'])}}
+		      {{Form::text('content','',['class'=>'form-control','placeholder'=>'contenu'])}}
 		    </div>
 		    {{Form::submit('commenter',['class'=>'btn btn-primary'])}}
 		  {!! Form::close() !!}

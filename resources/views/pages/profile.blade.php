@@ -20,6 +20,7 @@
 
 </div>
 <div class="jumbotron" style="background-color: #FFFFF0">
+  <!-- creer un nouveau post -->
   {!! Form::open(['action' => 'postsController@store','method'=>'POST']) !!}
     <div class="form-group">
       {{Form::label('title','Titre')}}

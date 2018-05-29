@@ -95,8 +95,14 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        
+    {   
+        $posts = DB::table('posts')->get();
+        foreach ($posts as $p) {
+               if($p->id_p==$id){
+                    $post=$p;
+               }
+         }
+        return view('pages.edit')->with('post',$post);
     }
 
     /**
@@ -107,8 +113,21 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        
+    {/*
+        $posts = DB::table('posts')->get();
+        foreach ($posts as $p) {
+               if($p->id_p==$id){
+                    $post=$p;
+               }
+         }
+
+        $post->title = $request->input('title');
+        $post->contenu = $request->input('content');
+        $post->img = 'photo.jpg';
+        $post->save();
+        return redirect('/profile');
+        return redirect('/profile');
+      */
     }
 
     /**
@@ -119,6 +138,15 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        
+        /*
+        $message='votre post a été supprimer';
+        $id_post=$request->input('id');
+        $id_user=auth()->user()->id;
+        DB::table('likes')->where('idpost', '=', $id_post)->delete();
+        DB::table('comments')->where('id_po', '=', $id_post)->delete();
+        DB::table('post')->where([['id_p', '=', $id_post],['id_user','=',$id_user],])->delete();
+        return redirect('/')->with('message',$message);
+        */
     }
+
 }
