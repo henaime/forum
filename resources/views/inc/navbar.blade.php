@@ -24,6 +24,9 @@
 
             <ul class="nav navbar-nav">
               <li><a href="/">Home</a></li>
+              @if(!auth::guest())
+              <li><a href="/create">Poster</a></li>
+              @endif
               <li><a href="/about">About</a></li>
             </ul>
 
