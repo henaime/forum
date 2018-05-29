@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
+<<<<<<< HEAD
+use DB;  
+=======
 use DB;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Validation\Validator;
+>>>>>>> f84cd453979465ea8f697781f19a4548e9e4b2dd
 
 class PostsController extends Controller
 {
@@ -37,7 +43,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-
+        return view('pages.create');
     }
 
     /**
@@ -48,11 +54,40 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
+=======
+        /*
+        $this->valdiate($request,[
+            'title' => 'required',
+            'content' => 'required',
+            'photo' => 'image|nullable|max:1999',
+        ]);
+    */
+
+          // Handle File Upload
+        if($request->hasFile('photo')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('photo')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('photo')->storeAs('/public', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'post.jpg';
+        }
+
+>>>>>>> e8068fb72cb417ee1b00f9068a67c4810c86fd84
         $post = new Post;
         $post->title = $request->input('title');
         $post->id_user = auth()->user()->id;
         $post->contenu = $request->input('content');
-        $post->img = 'photo.jpg';
+        $post->img = $fileNameToStore;
+
+
         $post->save();
         return redirect('/profile');
     }
@@ -136,15 +171,16 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        /*
+        
         $message='votre post a été supprimer';
-        $id_post=$request->input('id');
+        $id_post=$id;
         $id_user=auth()->user()->id;
         DB::table('likes')->where('idpost', '=', $id_post)->delete();
         DB::table('comments')->where('id_po', '=', $id_post)->delete();
-        DB::table('post')->where([['id_p', '=', $id_post],['id_user','=',$id_user],])->delete();
-        return redirect('/')->with('message',$message);
-        */
+        DB::table('posts')->where([['id_p', '=', $id_post],['id_user','=',$id_user],])->delete();
+        
+        
+        return redirect('/profile');
     }
 
 }
