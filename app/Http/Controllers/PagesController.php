@@ -21,15 +21,30 @@ class pagesController extends Controller
     {
         $posts=post::orderBy('id_p','asc')->paginate(3);
         $users=DB::table('users')->get();
+<<<<<<< HEAD
         //dd($posts);
         foreach ($posts as $post) {
             $nbr_comments[$post->id_p]=DB::table('comments')->where('id_po','=',$post->id_p)->groupBy('id_po')->count();
             $nbr_likes[$post->id_p]=DB::table('likes')->where('idpost','=',$post->id_p)->groupBy('idpost')->count();
         }
+=======
+
+       if($posts[0]!=null)
+        {
+            foreach ($posts as $post) {
+                $nbr_comments[$post->id_p]=DB::table('comments')->where('id_po','=',$post->id_p)->groupBy('id_po')->count();
+                $nbr_likes[$post->id_p]=DB::table('likes')->where('idpost','=',$post->id_p)->groupBy('idpost')->count();
+            }
+        
+>>>>>>> c7146186eb00c5c68e2ba3d555989e7c8ba413de
 
 
         $tab = ['posts'=>$posts,'users'=>$users,'nbr_likes'=>$nbr_likes,'nbr_comments'=>$nbr_comments,];
-        return view('pages.index')->with('tab',$tab);    
+        return view('pages.index')->with('tab',$tab); 
+        }else{
+           $tab=['posts'=>null];
+           return view('pages.index')->with('tab',$tab);  
+        }
     }
 
     /**
