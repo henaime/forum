@@ -24,11 +24,16 @@ Route::get('/users/{id}/{name}', function($id, $name){
 
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
+<<<<<<< HEAD
 Route::get('/create', 'postsController@create');
 Route::get('/show', 'PostsController@show');
 Route::get('/profile', 'PostsController@suprimer');
 Route::get('/show', 'PostsController@show'); 
 Route::get('/posts/delete/{id}', 'PostsController@destroy');
+=======
+Route::get('/show', 'PostsController@show');
+Route::get('/profile', 'PostsController@suprimer');
+>>>>>>> parent of a3757ae... c
 Route::get('/profile', 'usersController@index');
 
 Route::resource('pages','pagesController');
