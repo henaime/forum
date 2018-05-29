@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
+<<<<<<< HEAD
+use DB;  
+=======
 use DB;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Validation\Validator;
+>>>>>>> f84cd453979465ea8f697781f19a4548e9e4b2dd
 
 class PostsController extends Controller
 {
@@ -164,15 +168,16 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        /*
+        
         $message='votre post a été supprimer';
-        $id_post=$request->input('id');
+        $id_post=$id;
         $id_user=auth()->user()->id;
         DB::table('likes')->where('idpost', '=', $id_post)->delete();
         DB::table('comments')->where('id_po', '=', $id_post)->delete();
-        DB::table('post')->where([['id_p', '=', $id_post],['id_user','=',$id_user],])->delete();
-        return redirect('/')->with('message',$message);
-        */
+        DB::table('posts')->where([['id_p', '=', $id_post],['id_user','=',$id_user],])->delete();
+        
+        
+        return redirect('/profile');
     }
 
 }
