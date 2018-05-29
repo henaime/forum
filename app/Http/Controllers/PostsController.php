@@ -48,8 +48,6 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $post = new Post;
         $post->title = $request->input('title');
         $post->id_user = auth()->user()->id;
