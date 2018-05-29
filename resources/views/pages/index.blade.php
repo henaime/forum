@@ -5,6 +5,9 @@
 		<CENTER>
 			<a href="#"><img src="/storage/coverAcc.png"></a>
 		</CENTER>
+		@if(!auth::guest())
+			<a href="/create"><button class="btn btn-primary" style="position: center;">Creer un post</button>></a>
+		@endif
 		@if($tab['posts']!=null)
 			@foreach($tab['posts'] as $post)
 			<div class="jumbotron text-left" style="background-color: #FAFBFC; ">
