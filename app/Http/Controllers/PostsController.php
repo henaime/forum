@@ -152,7 +152,7 @@ class PostsController extends Controller
         
         
         return redirect('/profile');
-        /*test*/
+        
     }
 
 }
