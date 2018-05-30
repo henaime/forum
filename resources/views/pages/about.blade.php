@@ -42,8 +42,8 @@ php artisan serve<br>
 <br><br><br><br>#FRAMED BY
 <div>
 <span class="form-group">
-<img src="/storage/chairi_mourad.jpg" width="140" height="140" class="img-circle">
-	CHAIRI RAHMANI
+<img src="#" width="140" height="140" class="img-circle">
+	Monsieur KHALID AMCHNOUE
 </span>
 </div>
 </p>
