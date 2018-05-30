@@ -42,7 +42,7 @@ php artisan serve<br>
 <br><br><br><br>#FRAMED BY
 <div>
 <span class="form-group">
-<img src="#" width="140" height="140" class="img-circle">
+<img src="/storage/khalid.jpg" width="140" height="140" class="img-circle">
 	Monsieur KHALID AMCHNOUE
 </span>
 </div>

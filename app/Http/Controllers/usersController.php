@@ -19,6 +19,7 @@ class usersController extends Controller
         $user_email = auth()->user()->email;
         $user_id = auth()->user()->id;
         $posts = DB::table('posts')->where('id_user','=',$user_id)->get();
+        
         $user=['name'=>$user_name,'email'=>$user_email,'posts'=>$posts,];
         return view('pages.profile')->with('user',$user);
     }
