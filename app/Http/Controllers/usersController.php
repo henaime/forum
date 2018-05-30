@@ -18,7 +18,7 @@ class usersController extends Controller
         $user_name = auth()->user()->name;
         $user_email = auth()->user()->email;
         $user_id = auth()->user()->id;
-        $posts = DB::table('posts')->where('id_user','=',$user_id)->get();
+        $posts = DB::table('posts')->where('id_user','=',$user_id)->orderBy('created_at','desc')->get();
         
         $user=['name'=>$user_name,'email'=>$user_email,'posts'=>$posts,];
         return view('pages.profile')->with('user',$user);
@@ -54,7 +54,7 @@ class usersController extends Controller
     public function show($id)
     {
         $u = DB::table('users')->where('id','=',$id)->get();
-        $posts = DB::table('posts')->where('id_user','=',$id)->get();
+        $posts = DB::table('posts')->where('id_user','=',$id)->orderBy('created_at','desc')->get();
         $user=['user'=>$u,'posts'=>$posts,'id'=>$id,];
         return view('pages.profile1')->with('user',$user);
     }

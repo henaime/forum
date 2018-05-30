@@ -19,7 +19,7 @@ class pagesController extends Controller
      */
     public function index()
     {
-        $posts=post::orderBy('id_p','asc')->paginate(3);
+        $posts=post::orderBy('created_at','desc')->paginate(3);
         $users=DB::table('users')->get();
 
        if($posts[0]!=null)

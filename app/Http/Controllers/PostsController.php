@@ -49,17 +49,16 @@ class PostsController extends Controller
     public function store(Request $request)
     {
 
-        // Handle File Upload
         if($request->hasFile('photo')){
-            // Get filename with the extension
+
             $filenameWithExt = $request->file('photo')->getClientOriginalName();
-            // Get just filename
+
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
+
             $extension = $request->file('photo')->getClientOriginalExtension();
-            // Filename to store
+
             $fileNameToStore= time().'.'.$extension;
-            // Upload Image
+
             $path = $request->file('photo')->storeAs('/public', $fileNameToStore);
         } else {
             $fileNameToStore = 'post.png';

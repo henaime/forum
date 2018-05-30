@@ -37,7 +37,7 @@ php artisan serve<br>
 </span>
 <span class="form-group">
 <img src="/storage/chairi_mourad.jpg" width="140" height="140" class="img-circle">
-	CHAIRI RAHMANI
+	CHAIRI MOURAD
 </span>
 <br><br><br><br>#FRAMED BY
 <div>
