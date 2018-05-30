@@ -37,7 +37,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-
+        return view('pages.create');
     }
 
     /**
@@ -49,12 +49,29 @@ class PostsController extends Controller
     public function store(Request $request)
     {
 
+        // Handle File Upload
+        if($request->hasFile('photo')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('photo')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('photo')->storeAs('/public', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'post.png';
+        }
 
         $post = new Post;
         $post->title = $request->input('title');
         $post->id_user = auth()->user()->id;
         $post->contenu = $request->input('content');
-        $post->img = 'photo.jpg';
+        $post->img = $fileNameToStore;
+
+
         $post->save();
         return redirect('/profile');
     }
@@ -113,21 +130,8 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {/*
-        $posts = DB::table('posts')->get();
-        foreach ($posts as $p) {
-               if($p->id_p==$id){
-                    $post=$p;
-               }
-         }
+    {
 
-        $post->title = $request->input('title');
-        $post->contenu = $request->input('content');
-        $post->img = 'photo.jpg';
-        $post->save();
-        return redirect('/profile');
-        return redirect('/profile');
-      */
     }
 
     /**

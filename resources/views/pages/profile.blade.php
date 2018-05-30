@@ -21,7 +21,7 @@
 </div>
 <div class="jumbotron" style="background-color: #FFFFF0">
   <!-- creer un nouveau post -->
-  {!! Form::open(['action' => 'postsController@store','method'=>'POST']) !!}
+  {!! Form::open(['action' => 'postsController@store','method'=>'POST','files'=>'true','enctype'=>'multipart/form-data',]) !!}
     <div class="form-group">
       {{Form::label('title','Titre')}}
       {{Form::text('title','',['class'=>'form-control','placeholder'=>'titre'])}}
@@ -30,11 +30,15 @@
       {{Form::label('content','Contenu')}}
       {{Form::textarea('content','',['class'=>'form-control','placeholder'=>'contenu'])}}
     </div>
+    <div class="form-group">
+    {{Form::file('photo',['class'=>'form-control-file'])}}
+  </div>
     {{Form::submit('poster',['class'=>'btn btn-success'])}}
   {!! Form::close() !!}
 </div>
     @foreach($user['posts'] as $post)
      <div class="jumbotron text-left" style="background-color: #FFFFF0">
+            <img src="/storage/{{ $post->img }}" id="img">
             <H3><a href="posts/{{$post->id_p}}">{{ $post->title }}</a>
             <small><a href="users/{{$post->id_user}}">(@ {{ auth()->user()->name }} )</a></small>
              </H3>
