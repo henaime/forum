@@ -9,6 +9,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <style type="text/css">
+        #img{
+            position: absolute;
+            left:20px;
+            width:250px ;
+            height:250px ;
+        }
+    </style>
+
     
 
     <!-- Styles -->
