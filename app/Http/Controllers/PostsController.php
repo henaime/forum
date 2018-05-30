@@ -50,15 +50,8 @@ class PostsController extends Controller
     {
 
         if($request->hasFile('photo')){
-
-            $filenameWithExt = $request->file('photo')->getClientOriginalName();
-
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
             $extension = $request->file('photo')->getClientOriginalExtension();
-
             $fileNameToStore= time().'.'.$extension;
-
             $path = $request->file('photo')->storeAs('/public', $fileNameToStore);
         } else {
             $fileNameToStore = 'post.png';
