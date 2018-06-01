@@ -18,10 +18,10 @@
     	<dir class="row" id="app">
     		<dir class="center col-md-4">
     		    <li class="list-group-item active">Chat Room</li>	
-    		    <ul class="list-group">
+    		    <ul class="list-group"  v-chat-scroll>
                     
-                    <message v-for="value in chat.message">
-                        @{{ value }}
+                    <message v-for="value in chat.message" :key=value.index color='alert-success'>   
+                    		@{{ value }}     
                     </message>
        
                 </ul>
