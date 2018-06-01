@@ -36,6 +36,9 @@ Route::resource('comments','commentsController');
 Route::resource('likes','likesController');
 
 
+Route::get('chat',function(){
+	return view('chat');
+});
 
 Auth::routes();
 
